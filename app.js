@@ -55,7 +55,94 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
   let currentPosition = 4
   let currentRotation = 0
+  
+  // radnomly select a Tetromino and its first rotation 
+  let random = Math.floor(Math.random()*theTetrominoes.length)
+  let current = theTetrominoes[random][currentRotation]
 
-  console.log(theTetrominoes[0][0])
+  // draw the first rotation in the first tetromino
+  function draw(){
+    current.forEach(index=>{
+      squares[currentPosition + index].classList.add('tetromino')
+    })
+  }
+
+  function undraw(){
+    current.forEach(index=>{
+      squares[currentPosition + index].classList.remove('tetromino')
+    })
+  }
+
+  // make the tetromino move dwon every second
+  timerId = setInterval(moveDown, 1000)
+
+  function control(e){
+    if(e.keyCode === 37)// left
+    {
+      moveLeft()
+    }
+    else if(e.keyCode === 40)// dwon
+    {
+      moveDown()
+    }
+    else if(e.keyCode === 39)// right
+    {
+      moveRight()
+    }
+  }
+  document.addEventListener('keyup',control)
+
+  // move down function
+  function moveDown(){
+    undraw()
+    currentPosition += width
+    draw()
+    freeze()
+  }
+
+  // freeze function
+
+  function freeze(){
+    if(current.some(index=> squares[currentPosition + index + width].classList.contains('taken'))){
+      current.forEach(index => squares[currentPosition + index].classList.add('taken'))
+      // start a new tetromino falling
+      random = Math.floor(Math.random()* theTetrominoes.length)
+      current = theTetrominoes[random][currentRotation]
+      currentPosition = 4
+      draw()
+    }
+  }
+
+
+  // move the tetromino left, unless is it the edge or there is a blockage
+  function moveLeft(){
+    undraw()
+    const isAtLeftEdge = current.some(index=>(currentPosition + index) % width === 0)
+    if (!isAtLeftEdge) currentPosition -=1
+    if(current.some(index => squares[currentPosition + index].classList.contains('taken'))){
+      currentPosition += 1
+    }
+    draw()
+  }
+
+  function moveRight(){
+    undraw()
+    const isAtLeftEdge = current.some(index=>(currentPosition + index) % width === 0)
+    if (!isAtLeftEdge) currentPosition +=1
+    if(current.some(index => squares[currentPosition + index].classList.contains('taken'))){
+      currentPosition += 1
+    }
+    draw()
+  }
+
+
+
+
+
 
 })
+
+
+
+
+
