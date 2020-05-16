@@ -89,6 +89,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
     {
       moveRight()
     }
+    else if(e.keyCode === 38)// up
+    {
+      rotation()
+    }
   }
   document.addEventListener('keyup',control)
 
@@ -127,13 +131,37 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
   function moveRight(){
     undraw()
-    const isAtLeftEdge = current.some(index=>(currentPosition + index) % width === 0)
+    const isAtLeftEdge = current.some(index=>(currentPosition + index) % width === width - 1)
     if (!isAtLeftEdge) currentPosition +=1
     if(current.some(index => squares[currentPosition + index].classList.contains('taken'))){
       currentPosition += 1
     }
     draw()
   }
+
+  function rotation(){
+    undraw()
+    currentRotation ++
+    if(currentRotation === current.length){
+      currentRotation = 0
+    }
+    current = theTetrominoes[random][currentRotation]
+    draw()
+  }
+
+  // show up next tetromino in the mini grid
+
+  const displaySquares = document.querySelectorAll('.mini-grid div')
+  const displayWidth = 4
+  let displayIndex = 0
+
+  const upNextTetrominoes = [
+    [1, displayWidth+1, displayWidth*2+1, 2], //lTetromino
+    [0, displayWidth, displayWidth+1, displayWidth*2+1], //zTetromino
+    [1, displayWidth, displayWidth+1, displayWidth+2], //tTetromino
+    [0, 1, displayWidth, displayWidth+1], //oTetromino
+    [1, displayWidth+1, displayWidth*2+1, displayWidth*3+1] //iTetromino
+  ]
 
 
 

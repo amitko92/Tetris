@@ -1,3 +1,7 @@
+.main-grid{
+    display: flex;
+}
+
 .grid{
     width: 200px;
     height: 400px;
@@ -14,4 +18,18 @@
 
 .tetromino{
     background-color: cadetblue;
+}
+
+.mini-grid{
+    width:  80px;
+    height: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 50px;
+    background-color: blanchedalmond;
+}
+
+.mini-grid div{
+    width: 20px;
+    height: 20px;
 }
