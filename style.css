@@ -3,40 +3,59 @@
     display: grid;
     margin-left: 500px;
     margin-bottom: 10px;
-    width: 350px;
+    width: 370px;
+    height: 550px;
     border-radius: 10px;
 }
 
 .control-container{
     background-color: rgb(212, 226, 230);
+    grid-row: 0/2;
+    display: grid;
     margin: 10px;
+    padding: 0px;
     border-radius: 10px;
+    height: 50px;
+    width: 350px;
+    font-size: 2vh;
 
 }
 
-.h3{
-    margin-left: 10px;
+#div-numbers{
+  grid-column: 0 ;
+  grid-row: 0;
+}
+
+#div-buttons{
+  grid-column:2 ;
+  grid-row: 0;
 }
 
 .container {
+    height: 500px;
     display: flex;
     margin-left: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
   }
   
   
   .grid {
-    width: 200px;
-    height: 400px;
+    height: 462px;
+    width: 210px;
     display: flex;
     flex-wrap: wrap;
-    background-color: rgb(212, 226, 230);
+    background-color: black;
 }
 
   .grid div {
     height: 20px;
     width: 20px;
+  }
+
+  .box{
+    background-color: rgb(66, 64, 39);
+    height: 20px;
+    width: 20px;
+    margin: 0.5px 0.5px 0.5px 0.5px;
   }
   
   .tetromino {
@@ -60,6 +79,18 @@
 
 
   button{
-      margin-left: 50px;
-      margin-bottom: 5px;
+      border-radius: 20px;
   }
+
+  #restart-button{
+    background-color: orange;
+    grid-row-start: span;
+    grid-column-start: span;
+
+  }
+
+#start-button{
+  background-color: green;
+}
+
+
