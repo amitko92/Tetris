@@ -1,39 +1,36 @@
-.container{
+.container {
     display: flex;
-}
-
-.grid{
+  }
+  
+  
+  .grid {
     width: 200px;
     height: 400px;
     display: flex;
     flex-wrap: wrap;
-    background-color: burlywood;
-}
-
-.grid div {
-    width: 20px;
+    background-color: yellow;
+  }
+  
+  .grid div {
     height: 20px;
-    
-}
-
-.tetromino{
-    background-color: cadetblue;
-}
-
-.mini-grid{
-    width:  80px;
+    width: 20px;
+  }
+  
+  .tetromino {
+    background-color: blue;
+  }
+  
+  
+  .mini-grid {
+    margin-left: 50px;
+    width: 80px;
     height: 80px;
     display: flex;
     flex-wrap: wrap;
-    margin-left: 50px;
-    background-color: blanchedalmond;
-}
-
-.mini-grid div{
-    width: 20px;
+    background-color: yellow;
+  }
+  
+  .mini-grid div {
     height: 20px;
-}
-
-.mini-grid-label{
-    margin-left: 90px;
-}
+    width: 20px;
+  }
