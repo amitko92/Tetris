@@ -2,11 +2,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
   const grid = document.querySelector('.grid')
   let squares = Array.from(document.querySelectorAll('.grid div'))
   const scoreDisplay = document.querySelector('#score')
+  const levelDisplay = document.querySelector('#level')
   const startBtn = document.querySelector('#start-button')
   const width = 10
   let nextRandom = 0
   let timerId
   let score = 0
+  let level = 0
   const colors = [
     'orange',
     'red',
@@ -106,6 +108,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
     if(current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
       current.forEach(index => squares[currentPosition + index].classList.add('taken'))
       //start a new tetromino falling
+      level += 1
+      levelDisplay.innerHTML = level
       random = nextRandom
       nextRandom = Math.floor(Math.random() * theTetrominoes.length)
       current = theTetrominoes[random][currentRotation]
@@ -219,6 +223,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
   }
 
+  
 
 
 })
