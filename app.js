@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   const scoreDisplay = document.querySelector('#score')
   const levelDisplay = document.querySelector('#level')
   const startBtn = document.querySelector('#start-button')
+  const restartBtn = document.querySelector('#restart-button')
   const width = 10
   let nextRandom = 0
   let timerId
@@ -195,6 +196,24 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
   })
 
+  restartBtn.addEventListener('click', ()=>{
+    clearInterval(timerId)
+    timerId = null
+    restart()
+    nextRandom = Math.floor(Math.random() * theTetrominoes.length)
+    current = theTetrominoes[random][currentRotation]
+    
+    if (timerId) {
+      clearInterval(timerId)
+      timerId = null
+    } else {
+      draw()
+      timerId = setInterval(moveDown, 1000)
+      nextRandom = Math.floor(Math.random()*theTetrominoes.length)
+      displayShape()
+    }
+  })
+
   //add score
   function addScore() {
     for (let i = 0; i < 199; i +=width) {
@@ -223,9 +242,20 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
   }
 
-  
-
-
+  function restart(){
+    undraw()
+    level = 0
+    score = 0
+    scoreDisplay.innerHTML = score
+    levelDisplay.innerHTML = level
+    currentPosition = 4
+    for (let i = 0; i < 199; i +=width){
+      squares[index].classList.remove('taken')
+      squares[index].classList.remove('tetromino')
+      squares[index].style.backgroundColor = ''
+    }
+  }
+    
 })
 
 

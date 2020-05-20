@@ -1,0 +1,77 @@
+body{
+    background-color: blanchedalmond;
+}
+
+.window{
+    width: 95vw;
+    height: 95vh;
+    background-color: blue;
+    display: grid;
+}
+
+.title-div{
+    background-color: darkgray;
+    grid-row: 1;
+    grid-column-start: 1; 
+    grid-column-end: 3;
+}
+
+
+.buttons-div{
+    background-color: darkgreen;
+    grid-row: 2;
+    grid-column-start: 1; 
+    grid-column-end: 3;
+}
+
+.tetris-grid{
+    grid-column: 1;
+    grid-row: 3/5;
+    display: grid;
+    /*height: 80vh;
+    width: 40vw;
+    */
+    grid-template-columns: repeat(10,1fr)
+}
+
+.item{
+    background-color: rgb(89, 236, 31);
+    margin: 0.5px;
+}
+
+.sidebar{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.next-div{
+    display: grid;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.score-div{
+    grid-column: 2;
+    grid-row: 1;
+    background-color: brown;
+}
+
+.mini-grid{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    height: 100%;
+    width: 100%;
+    
+}
+
+.mini-item{
+    background-color: darkgoldenrod;
+    margin: 0.5px;
+    height: 100%;
+    width: 100%;
+}
+
+.table-score-div{
+    background-color: darkorchid;
+}
+
