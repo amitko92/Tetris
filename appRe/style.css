@@ -5,73 +5,87 @@ body{
 .window{
     width: 95vw;
     height: 95vh;
-    background-color: blue;
     display: grid;
 }
 
 .title-div{
-    background-color: darkgray;
     grid-row: 1;
     grid-column-start: 1; 
     grid-column-end: 3;
+    height: 10vh;
+    text-align: center;
 }
 
 
 .buttons-div{
-    background-color: darkgreen;
     grid-row: 2;
     grid-column-start: 1; 
     grid-column-end: 3;
+    height: fit-content;
+    text-align: center;
 }
 
 .tetris-grid{
     grid-column: 1;
     grid-row: 3/5;
     display: grid;
-    /*height: 80vh;
-    width: 40vw;
-    */
+    height:70vh ;
+    width: 20vw;
+    margin-left: auto;
     grid-template-columns: repeat(10,1fr)
 }
 
 .item{
     background-color: rgb(89, 236, 31);
     margin: 0.5px;
+    border-radius: 0.2vh;
+    border-radius: 0.2vw;
 }
 
 .sidebar{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin-left: 1vw;
+    width: 20vw;
+    height: 30vh;
 }
 
-.next-div{
+.mini-grid{
     display: grid;
-    grid-column: 1;
-    grid-row: 1;
+    grid-template-columns: repeat(4,1fr);
+    height: 10vh;
+    width: 10vw;
+}
+
+.mini-item{
+    background-color: cornflowerblue;
+    border-radius: 0.2vh;
+    border-radius: 0.2vw;
+    margin: 0.5px;
 }
 
 .score-div{
     grid-column: 2;
     grid-row: 1;
-    background-color: brown;
+    height: 20vh;
+    text-align: center;
 }
 
-.mini-grid{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    height: 100%;
-    width: 100%;
-    
+.h3{
+    margin-top: 0vh;
+    margin-right: 3vw;
 }
 
-.mini-item{
-    background-color: darkgoldenrod;
-    margin: 0.5px;
-    height: 100%;
-    width: 100%;
+button{
+    border-radius: 1vh;
 }
 
-.table-score-div{
-    background-color: darkorchid;
+#start-button{
+    background-color: green;    
 }
+
+#restart-button{
+    background-color: orange;
+}
+
 
