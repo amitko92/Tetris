@@ -47,7 +47,16 @@ body{
     grid-template-columns: 1fr 1fr;
     margin-left: 1vw;
     width: 20vw;
-    height: 30vh;
+    height: 10vh;
+}
+
+.score-table{
+    background-color: mediumaquamarine;
+    border-radius: 20px;
+    margin-bottom: 4vh;
+    margin-left: 1vw;
+    width: 14vw;
+    height: 50vh;
 }
 
 .mini-grid{
