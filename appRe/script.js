@@ -187,18 +187,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
     draw()
   }
 
-  function drawGrid(){
-      
-      squares.forEach(square=>{
-        square.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
-      })
-  }
-
   function restartFunc(){
     let i = 0
     currentPosition = 4
     level = 0
-    score = 1
+    score = 0
     levelDisplay.innerHTML = level
     scoreDisplay.innerHTML = score
 
@@ -224,12 +217,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     //add score
     function addScore() {
+        let counter = 0
         for (let i = 0; i < 199; i +=width) {
           const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9]
     
           if(row.every(index => squares[index].classList.contains('taken'))) {
-            score +=10
-            scoreDisplay.innerHTML = score
+            counter += 1
             row.forEach(index => {
               squares[index].classList.remove('taken')
               squares[index].classList.remove('tetromino')
@@ -240,13 +233,20 @@ document.addEventListener('DOMContentLoaded', ()=>{
             squares.forEach(cell => grid.appendChild(cell))
           }
         }
+        if(counter <= 1)
+            score += counter*10
+        else
+            score += counter*10 + counter*5
+            scoreDisplay.innerHTML = score
+
       }
     
       //game over
       function gameOver() {
         if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
-          scoreDisplay.innerHTML = 'end'
+          window.alert("Game Over, your score is: " + score)
           clearInterval(timerId)
+          restartFunc();
         }
       }
 
@@ -255,7 +255,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
   })
 
   restartBtn.addEventListener('click', ()=>{
-      restartFunc();
+    startOrPauseFunc();
+    currentRotation = 0
+    random = Math.floor(Math.random() * theTetrominoes.length)
+    current = theTetrominoes[random][currentRotation]
+    restartFunc();
   })
 
 })
