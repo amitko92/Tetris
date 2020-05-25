@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const levelDisplay = document.querySelector('#level')
     const startBtn = document.querySelector('#start-button')
     const restartBtn = document.querySelector('#restart-button')
+    const scoreName1 = document.querySelector('#name-1')
     const width = 10
     displayWidth = 4
     const startGridColor =  '#59ec1f'
@@ -255,15 +256,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
       }
 
   startBtn.addEventListener('click', ()=>{
-    startOrPauseFunc();
+    startOrPauseFunc()
   })
 
   restartBtn.addEventListener('click', ()=>{
-    startOrPauseFunc();
+    startOrPauseFunc()
     currentRotation = 0
     random = Math.floor(Math.random() * theTetrominoes.length)
     current = theTetrominoes[random][currentRotation]
-    restartFunc();
+    restartFunc()
   })
 
 })
