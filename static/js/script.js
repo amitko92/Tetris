@@ -10,12 +10,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const scoreName1 = document.querySelector('#name-1')
     const width = 10
     displayWidth = 4
-    const startGridColor =  '#59ec1f'
+    let startGridColor =  '#59ec1f'
     let nextRandom = 0
     let timerId
     let score = 0
-    let level = 0
+    let level = 1
     const displayIndex = 0
+    let counterLevel  = 0
+    let currentSpeed = 1000
+    const speedReruction = 250
 
     const colors = [
         'orange',
@@ -24,6 +27,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
         'green',
         'blue'
       ]
+
+    const backgroundColor = [
+      '#00a000',
+      '#ffe100',
+      '#ffa800',
+      '#ff0000'
+    ]
 
     //The Tetrominoes
   const lTetromino = [
@@ -142,12 +152,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
     if(current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
       current.forEach(index => squares[currentPosition + index].classList.add('taken'))
       //start a new tetromino falling
-      level += 1
-      levelDisplay.innerHTML = level
       random = nextRandom
       nextRandom = Math.floor(Math.random() * theTetrominoes.length)
       current = theTetrominoes[random][currentRotation]
       currentPosition = 4
+      levelUp()
       draw()
       displayNextShape()
       addScore()
@@ -210,7 +219,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         timerId = null
       } else {
         draw()
-        timerId = setInterval(moveDown, 1000)
+        timerId = setInterval(moveDown, currentSpeed)
         nextRandom = Math.floor(Math.random()*theTetrominoes.length)
         displayNextShape()
       }
@@ -266,5 +275,25 @@ document.addEventListener('DOMContentLoaded', ()=>{
     current = theTetrominoes[random][currentRotation]
     restartFunc()
   })
+
+  function levelUp(){
+    counterLevel += 1
+    if (counterLevel > 10){
+      counterLevel = 0
+      level += 1
+      changeColorAndSpeed()
+      levelDisplay.innerHTML = level
+    }
+    else
+    counterLevel += 1
+  }
+
+  function changeColorAndSpeed(){
+    clearInterval(timerId)
+    currentSpeed -= speedReruction
+    timerId = setInterval(moveDown, currentSpeed)
+    if(level >= 4)
+      startGridColor = backgroundColor[level - 1]
+  }
 
 })
