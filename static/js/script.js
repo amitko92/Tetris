@@ -18,7 +18,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const displayIndex = 0
     let counterLevel  = 0
     let currentSpeed = 1000
-    const speedReruction = 250
+    const speedReruction = 150
+
+    const names = [
+      'amit',
+      'roi',
+      'noam',
+      ''
+    ]
 
     const colors = [
         'orange',
@@ -200,6 +207,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
   function restartFunc(){
     let i = 0
     currentPosition = 4
+    currentSpeed = 1000
+    counterLevel = 0
     level = 0
     score = 0
     levelDisplay.innerHTML = level
@@ -281,19 +290,19 @@ document.addEventListener('DOMContentLoaded', ()=>{
     if (counterLevel > 10){
       counterLevel = 0
       level += 1
-      changeColorAndSpeed()
+      changeSpeed()
       levelDisplay.innerHTML = level
     }
     else
-    counterLevel += 1
+      counterLevel += 1
   }
 
-  function changeColorAndSpeed(){
-    clearInterval(timerId)
-    currentSpeed -= speedReruction
-    timerId = setInterval(moveDown, currentSpeed)
-    if(level >= 4)
-      startGridColor = backgroundColor[level - 1]
+  function changeSpeed(){
+    if(currentSpeed > 100){
+      clearInterval(timerId)
+      currentSpeed -= speedReruction
+      timerId = setInterval(moveDown, currentSpeed)
+    }
   }
 
 })
